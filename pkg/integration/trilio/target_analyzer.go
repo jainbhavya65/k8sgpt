@@ -19,7 +19,6 @@ func (c *TargetAnalyzer) Analyze(a common.Analyzer) ([]common.Result, error) {
 	client := a.Client.GetCtrlClient()
 	namespace := a.Namespace
 	kind := TargetValidate
-	var failures []common.Failure
 	gvk := schema.GroupVersionKind{
 		Group:   "triliovault.trilio.io",
 		Version: "v1",
@@ -69,14 +68,15 @@ func (c *TargetAnalyzer) Analyze(a common.Analyzer) ([]common.Result, error) {
 				continue
 			}
 
-			failures = append(failures, common.Failure{
-				Text: reason,
-			})
 			preAnalysis[fmt.Sprintf("%s/%s", item.GetName(), item.GetNamespace())] = common.PreAnalysis{
 				TargetAnalyzer: common.TargetAnalyzer{
 					TargetName: item.GetName(),
 				},
-				FailureDetails: failures,
+				FailureDetails: []common.Failure{
+					{
+						Text: reason,
+					},
+				},
 			}
 		}
 
