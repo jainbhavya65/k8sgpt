@@ -25,7 +25,7 @@ import (
 	"github.com/k8sgpt-ai/k8sgpt/pkg/integration/trivy"
 	"github.com/k8sgpt-ai/k8sgpt/pkg/util"
 	"github.com/spf13/viper"
-	"github.com/jainbhavya65/k8sgpt/pkg/integration/trilio"
+	"github.com/k8sgpt-ai/k8sgpt/pkg/integration/trilio"
 )
 
 type IIntegration interface {

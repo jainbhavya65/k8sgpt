@@ -66,6 +66,11 @@ type PreAnalysis struct {
 	ScaledObject             keda.ScaledObject
 	TrivyVulnerabilityReport trivy.VulnerabilityReport
 	TrivyConfigAuditReport   trivy.ConfigAuditReport
+	TargetAnalyzer			 TargetAnalyzer
+}
+
+type TargetAnalyzer struct {
+	TargetName string
 }
 
 type Result struct {
