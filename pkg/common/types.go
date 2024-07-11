@@ -67,6 +67,11 @@ type PreAnalysis struct {
 	TrivyVulnerabilityReport trivy.VulnerabilityReport
 	TrivyConfigAuditReport   trivy.ConfigAuditReport
 	TargetAnalyzer			 TargetAnalyzer
+	BackupAnalyzer         	 BackupAnalyzer
+}
+
+type BackupAnalyzer struct {
+	BackupName string
 }
 
 type TargetAnalyzer struct {

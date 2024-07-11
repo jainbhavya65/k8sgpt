@@ -14,6 +14,7 @@ import (
 
 const (
 	TargetValidate = "TargetAnalyzer"
+	BackupValidate = "BackupAnalyzer"
 )
 
 type Trilio struct{}
@@ -60,10 +61,11 @@ func (p *Trilio) UnDeploy(_ string) error {
 
 func (p *Trilio) AddAnalyzer(mergedMap *map[string]common.IAnalyzer) {
 	(*mergedMap)[TargetValidate] = &TargetAnalyzer{}
+	(*mergedMap)[BackupValidate] = &BackupAnalyzer{}
 }
 
 func (p *Trilio) GetAnalyzerName() []string {
-	return []string{TargetValidate}
+	return []string{TargetValidate,BackupValidate}
 }
 
 func (p *Trilio) GetNamespace() (string, error) {
@@ -71,7 +73,7 @@ func (p *Trilio) GetNamespace() (string, error) {
 }
 
 func (p *Trilio) OwnsAnalyzer(analyzer string) bool {
-	return analyzer == TargetValidate
+	return (analyzer == TargetValidate) || (analyzer == BackupValidate)
 }
 
 func (t *Trilio) IsActivate() bool {
